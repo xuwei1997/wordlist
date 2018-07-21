@@ -1,4 +1,5 @@
 import mysql.connector
+import operator
 
 #输入单元
 unit = input("请输入单元:")
@@ -19,9 +20,10 @@ total = len(values)
 print("认识的单词：........................................")
 cursor.execute("select * from word where unit = %s and wkey = %s",(unit,"1"))
 values_end = cursor.fetchall()
+values_end.sort(key=operator.itemgetter(0))
 i=1
 for word in values_end:
-    print(str(i)+'：'+word[0]+'：'+word[1])
+    print(str(i) + '：' + str(word[0]) + '：' + word[1] + '：' + word[2])
     i=i+1
 
 #数据库结果读取不认识的单词
@@ -30,9 +32,10 @@ cursor.execute("select * from word where unit = %s and wkey = %s",(unit,"2"))
 values_end = cursor.fetchall()
 # print(values_end)
 errorlist = len(values_end)
+values_end.sort(key=operator.itemgetter(0))
 i=1
 for word in values_end:
-    print(str(i)+'：'+word[0]+'：'+word[1])
+    print(str(i) + '：' + str(word[0]) + '：' + word[1] + '：' + word[2])
     i=i+1
 
 
