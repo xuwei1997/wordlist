@@ -33,10 +33,10 @@ for word in values:
         print(key)
         print(" ")
         if key=='1' or key=='2' :
-            break
             cursor.execute("UPDATE word SET wkey= %s  WHERE eng= %s", (key, word[1]))
             conn.commit()
             i=i+1
+            break
             # break
 
 	
